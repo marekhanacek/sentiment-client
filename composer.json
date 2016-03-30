@@ -31,7 +31,9 @@
 		"nette/utils": "~2.3.0",
 		"latte/latte": "~2.3.0",
 		"tracy/tracy": "~2.3.0",
-		"dg/adminer-custom": "~1.6"
+		"jwhennessey/phpinsight": "^2.0",
+		"symfony/dom-crawler": "^3.0",
+		"symfony/css-selector": "^3.0"
 	},
 	"require-dev": {
 		"nette/tester": "~1.3"

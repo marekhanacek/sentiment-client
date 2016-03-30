@@ -20,7 +20,5 @@ session:
 
 
 services:
-	- App\Model\UserManager
-	- App\Forms\FormFactory
-	- App\Forms\SignFormFactory
 	router: App\RouterFactory::createRouter
+	- PHPInsight\Sentiment

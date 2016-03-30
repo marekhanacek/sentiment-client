@@ -1,28 +1,23 @@
-{**
- * @param string   $basePath web base path
- * @param array    $flashes  flash messages
- *}
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-
-	<title>{ifset title}{include title|striptags} | {/ifset}Nette Sandbox</title>
-
-	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<title>Sentiment of post on Nette forum</title>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 	<meta name="viewport" content="width=device-width">
-	{block head}{/block}
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
 	{include content}
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	<script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "pageLength": 50
+            });
+        } );
 
-	{block scripts}
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
-	{/block}
+	</script>
 </body>
 </html>
