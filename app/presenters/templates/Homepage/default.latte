@@ -1,22 +1,22 @@
 {block content}
 
-<table id="example">
+<table id="example" class="display">
     <thead>
         <tr>
-            <th>user</th>
-            <th>total_count</th>
-            <th>pos_avg</th>
-            <th>neu_avg</th>
-            <th>neg_avg</th>
+            <th>User</th>
+            <th>Number of comments</th>
+            <th>Positive</th>
+            <th>Neutral</th>
+            <th>Negative</th>
         </tr>
     </thead>
     <tbody>
         <tr n:foreach="$users as $user">
             <td>{$user['user']}</td>
             <td>{$user['total_count']}</td>
-            <td>{$user['pos_avg']}</td>
-            <td>{$user['neu_avg']}</td>
-            <td>{$user['neg_avg']}</td>
+            <td>{$user['pos_avg']|number:1} %</td>
+            <td>{$user['neu_avg']|number:1} %</td>
+            <td>{$user['neg_avg']|number:1} %</td>
         </tr>
     </tbody>
 

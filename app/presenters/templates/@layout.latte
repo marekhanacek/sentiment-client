@@ -3,12 +3,28 @@
 <head>
 	<meta charset="utf-8">
 	<title>Sentiment of posts on Nette forum</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 	<meta name="viewport" content="width=device-width">
+	<style>
+	    .container.main {
+	        padding-top: 70px;
+	        padding-bottom: 50px;
+	    }
+	</style>
 </head>
 
 <body>
-	{include content}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nette forum Sentiment</a>
+        </div>
+    </nav>
+
+    <div class="container main">
+	    {include content}
+	</div>
+
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 	<script>

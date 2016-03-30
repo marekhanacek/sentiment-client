@@ -14,7 +14,7 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
 	public function renderDefault()
 	{
         $query = "
-            SELECT AVG(pos) as pos_avg, AVG(neu) as neu_avg, AVG(neg) as neg_avg, COUNT(*) as total_count, user
+            SELECT AVG(pos) * 100 as pos_avg, AVG(neu) * 100 as neu_avg, AVG(neg) * 100 as neg_avg, COUNT(*) as total_count, user
             FROM comments
             GROUP BY user
             HAVING total_count > 5
