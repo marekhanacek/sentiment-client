@@ -49,8 +49,6 @@ foreach($categoryUrls as $categoryUrl) {
         $categoryHtml = file_get_contents($categoryUrl.'?p='.$i);
         $categoryCrawler = new \Symfony\Component\DomCrawler\Crawler($categoryHtml);
 
-        echo $categoryUrl.'?p='.$i.'<br />';
-
         foreach($categoryCrawler->filter('div.inner div.box div.inbox table tbody tr td.tcl div.tclcon a') as $a) {
             $postLink = 'https://forum.nette.org/en/'.$a->getAttribute('href');
             $postHtml = file_get_contents($postLink);
@@ -58,7 +56,7 @@ foreach($categoryUrls as $categoryUrl) {
 
             foreach($postCrawler->filter('#content div.inner div.blockpost') as $el) {
                 $c = new \Symfony\Component\DomCrawler\Crawler($el);
-                $comment = \Nette\Utils\Strings::trim($c->filter("div.postmsg")->text());
+                $comment = modifyComment($c->filter("div.postmsg")->html());
                 $user = $c->filter("dl dt strong a")->text();
                 $category = $sentiment->categorise($comment);
                 $score = $sentiment->score($comment);
@@ -78,3 +76,11 @@ foreach($categoryUrls as $categoryUrl) {
 }
 
 echo "DONE".PHP_EOL;
+
+
+function modifyComment($string) {
+    $string = \Nette\Utils\Strings::trim($string);
+    $string = preg_replace('#(<pre.*?>).*?(</pre>)#', '$1$2', $string);
+    $string = strip_tags($string);
+    return $string;
+}
