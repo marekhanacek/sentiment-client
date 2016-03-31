@@ -1,4 +1,7 @@
 <?php
+
+set_time_limit(0);
+
 /** @var \Nette\DI\Container $container */
 $container = require __DIR__ . '/../app/bootstrap.php';
 
@@ -80,7 +83,9 @@ echo "DONE".PHP_EOL;
 
 function modifyComment($string) {
     $string = \Nette\Utils\Strings::trim($string);
-    $string = preg_replace('#(<pre.*?>).*?(</pre>)#', '$1$2', $string);
+    $string = preg_replace('#(<pre.*?>)[\s\S]*?(</pre>)#', '', $string);
     $string = strip_tags($string);
+    $string = str_replace("\n", " ", $string);
+    $string = preg_replace('/\s+/', ' ', $string);
     return $string;
 }
