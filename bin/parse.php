@@ -61,12 +61,14 @@ foreach($categoryUrls as $categoryUrl) {
                 $c = new \Symfony\Component\DomCrawler\Crawler($el);
                 $comment = modifyComment($c->filter("div.postmsg")->html());
                 $user = $c->filter("dl dt strong a")->text();
+                $rating = $c->filter(".num span")->text();
                 $category = $sentiment->categorise($comment);
                 $score = $sentiment->score($comment);
 
                 $data = [
                     'user' => $user,
                     'comment' => $comment,
+                    'rating' => $rating,
                     'category' => $category,
                     'pos' => $score['pos'],
                     'neu' => $score['neu'],

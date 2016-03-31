@@ -8,6 +8,8 @@
             <th>Positive</th>
             <th>Neutral</th>
             <th>Negative</th>
+            <th>Positive rating</th>
+            <th>Negative rating</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,8 @@
             <td>{$user['pos_avg']|number:1} %</td>
             <td>{$user['neu_avg']|number:1} %</td>
             <td>{$user['neg_avg']|number:1} %</td>
+            <td>{$user['total_rating_positive']}</td>
+            <td>{$user['total_rating_negative']}</td>
         </tr>
     </tbody>
 
